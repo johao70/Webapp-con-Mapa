@@ -1,4 +1,17 @@
+const http = new XMLHttpRequest();
+
+const API_URL = "http://localhost:3000/estudiantes";
+
 mapa = () => {
+    http.open('GET', API_URL);
+    http.send();
+    http.onload = () => {
+        if (http.status === 200) {    
+            const datos = (http.response);
+            console.log(datos)
+        }
+    }
+
     const quito = [ -0.178810, -78.468893]
 
     const mymap = L.map('mapa', { zoom: 12, center: quito });
